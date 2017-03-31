@@ -13,6 +13,42 @@ public class CemeteryDetails implements Serializable {
     private String cemeteryName;
     private String latitude;
     private String longitude;
+    private String countryName;
+    private String stateName;
+    private String countyName;
+    private String cityName;
+
+    public String getCountryName() {
+        return countryName;
+    }
+
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
+    }
+
+    public String getStateName() {
+        return stateName;
+    }
+
+    public void setStateName(String stateName) {
+        this.stateName = stateName;
+    }
+
+    public String getCountyName() {
+        return countyName;
+    }
+
+    public void setCountyName(String countyName) {
+        this.countyName = countyName;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
 
     public int getCemeteryId() {
         return cemeteryId;
@@ -46,11 +82,15 @@ public class CemeteryDetails implements Serializable {
         this.longitude = longitude;
     }
 
-    public CemeteryDetails(int cemeteryId, String cemeteryName, String latitude, String longitude) {
+    public CemeteryDetails(int cemeteryId, String cemeteryName, String latitude, String longitude, String countryName, String stateName, String countyName, String cityName) {
 
         this.cemeteryId = cemeteryId;
         this.cemeteryName = cemeteryName;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.countryName = countryName;
+        this.stateName = stateName;
+        this.countyName = countyName;
+        this.cityName = cityName;
     }
 }

@@ -14,7 +14,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     EditText searchquery;
@@ -75,8 +74,12 @@ private class GetItems extends AsyncTask<String, Void, ArrayList<CemeteryDetails
                         Log.d("adil", cemeteryName);
                         String latitude = cemobject.getString("latitude");
                         String longitude = cemobject.getString("longitude");
+                        String countryName = cemobject.getString("countryName");
+                        String stateName  = cemobject.getString("stateName");
+                        String countyName = cemobject.getString("countyName");
+                        String cityName = cemobject.getString("cityName");
 
-                        cemdetails.add(new CemeteryDetails(cemeteryID,cemeteryName,latitude,longitude));
+                        cemdetails.add(new CemeteryDetails(cemeteryID,cemeteryName,latitude,longitude,countryName, stateName, countyName, cityName));
                         Log.d("adil", String.valueOf(cemdetails));
                     }
 
