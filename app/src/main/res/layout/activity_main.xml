@@ -22,33 +22,22 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:text=""
-            android:ems="10"
+            android:hint="Enter cemetery name here"
+            android:textColor="@color/colorPrimary"
+            android:ems="11"
             android:id="@+id/editText"
-            android:layout_marginTop="197dp"
+            android:layout_marginTop="104dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
 
-        <TextView
-            android:text="Enter cemetery name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView2"
-            android:layout_alignParentTop="true"
-            android:layout_alignLeft="@+id/editText"
-            android:layout_alignStart="@+id/editText"
-            android:layout_marginTop="89dp" />
-
         <Button
-            android:text="Button"
+            android:text="Search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="120dp"
-            android:layout_marginStart="120dp"
-            android:layout_marginBottom="138dp"
             android:id="@+id/button"
-            android:onClick="searchqueryfire"/>
+            android:onClick="searchqueryfire"
+            android:layout_below="@+id/editText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="36dp" />
     </RelativeLayout>
 </RelativeLayout>

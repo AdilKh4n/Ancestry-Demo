@@ -69,20 +69,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             {
                 lati = Double.parseDouble(details.get(i).getLatitude());
                 longx = Double.parseDouble(details.get(i).getLongitude());
+
                 cemname = details.get(i).getCemeteryName();
                 cemcountry = details.get(i).getCountryName();
                 cemstate = details.get(i).getStateName();
                 cemcounty = details.get(i).getCountyName();
                 cemcity = details.get(i).getCityName();
 
+
                 mMap.addMarker(new MarkerOptions().
                         position(new LatLng(lati, longx)).
                         title(details.get(i).getCemeteryName()).
-                        snippet(details.get(i).getStateName()));
+                        snippet(cemcity +", "+cemcounty+", "+ cemstate +", "+ cemcountry ));
+
                count++;
 
             }
         }
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lati, longx),1));
 
         mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
             @Override
@@ -96,40 +100,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 // Getting view from the layout file info_window_layout
                 View v = getLayoutInflater().inflate(R.layout.info_window_layout, null);
 
-                // Getting reference to the TextView to set latitude
+                // Getting reference to the TextView
                 TextView tvLat = (TextView) v.findViewById(R.id.tv_lat);
-
-                // Getting reference to the TextView to set longitude
-                TextView tvLng = (TextView) v.findViewById(R.id.tv_lng);
 
                 TextView tvcem = (TextView) v.findViewById(R.id.tv_cemname);
 
                 TextView tvcountry = (TextView) v.findViewById(R.id.tv_countryName);
 
-                TextView tvstate = (TextView) v.findViewById(R.id.tv_stateName);
-
-                TextView tvcounty = (TextView) v.findViewById(R.id.tv_countyName);
-
-                TextView tvcity = (TextView) v.findViewById(R.id.tv_cityName);
-
                 // Setting the latitude
-                tvLat.setText("Latitude:" + arg0.getPosition());
+                tvLat.setText("Lat/Lng: " + arg0.getPosition());
 
-                // Setting the longitude
-                tvLng.setText("Longitude:"+ longx);
+                tvcem.setText("Cemetery Name: " + arg0.getTitle());
 
-                // Setting the cemetery name
-                tvcem.setText("Cemetery Name:"+ arg0.getTitle());
+                tvcountry.setText("Location: " + arg0.getSnippet());
 
-                tvcountry.setText("Country Name:"+ cemcountry);
-
-                tvstate.setText("State Name:"+arg0.getSnippet());
-
-                tvcounty.setText("County Name:"+cemcounty);
-
-                tvcity.setText("City Name:"+cemcity);
-
-                // Returning the view containing InfoWindow contents
                 return v;
 
             }

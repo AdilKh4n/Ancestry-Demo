@@ -46,7 +46,6 @@ private class GetItems extends AsyncTask<String, Void, ArrayList<CemeteryDetails
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        //  Toast.makeText(MainActivity.this,"Json Data is downloading",Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -69,9 +68,7 @@ private class GetItems extends AsyncTask<String, Void, ArrayList<CemeteryDetails
                     {
                         JSONObject cemobject = cemetery.getJSONObject(i);
                         int cemeteryID = cemobject.getInt("cemeteryId");
-                    //    Log.d("adil", cemeteryID);
                         String cemeteryName = cemobject.getString("cemeteryName");
-                        Log.d("adil", cemeteryName);
                         String latitude = cemobject.getString("latitude");
                         String longitude = cemobject.getString("longitude");
                         String countryName = cemobject.getString("countryName");
@@ -80,7 +77,6 @@ private class GetItems extends AsyncTask<String, Void, ArrayList<CemeteryDetails
                         String cityName = cemobject.getString("cityName");
 
                         cemdetails.add(new CemeteryDetails(cemeteryID,cemeteryName,latitude,longitude,countryName, stateName, countyName, cityName));
-                        Log.d("adil", String.valueOf(cemdetails));
                     }
 
                 }
@@ -115,8 +111,8 @@ private class GetItems extends AsyncTask<String, Void, ArrayList<CemeteryDetails
     protected void onPostExecute(ArrayList<CemeteryDetails> result) {
 
            Intent i = new Intent(MainActivity.this, MapsActivity.class);
-        //   i.putStringArrayListExtra("Info", result);
-       i.putExtra("adil",result);
+        // i.putStringArrayListExtra("Info", result);
+           i.putExtra("adil",result);
            startActivity(i);
    }
 }
