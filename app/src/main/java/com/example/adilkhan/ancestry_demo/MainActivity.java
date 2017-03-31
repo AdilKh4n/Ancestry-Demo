@@ -51,10 +51,11 @@ private class GetItems extends AsyncTask<String, Void, ArrayList<CemeteryDetails
     @Override
     protected ArrayList<CemeteryDetails> doInBackground(String... params) {
         HttpHandler sh = new HttpHandler();
+
         // Making a request to url and getting response
-        Log.d("adil",params[0]);
         String url = "https://www.findagrave.com/cgi-bin/api.cgi?mode=cemetery&cemeteryName="+params[0]+"&limit=25&skip=0";
         //String url = "https://www.findagrave.com/cgi-bin/api.cgi?mode=memorialPhotos&memorialId=13756942";
+
         String jsonStr = sh.makeServiceCall(url);
         ArrayList<CemeteryDetails> cemdetails = new ArrayList<CemeteryDetails>();
 
@@ -111,7 +112,6 @@ private class GetItems extends AsyncTask<String, Void, ArrayList<CemeteryDetails
     protected void onPostExecute(ArrayList<CemeteryDetails> result) {
 
            Intent i = new Intent(MainActivity.this, MapsActivity.class);
-        // i.putStringArrayListExtra("Info", result);
            i.putExtra("adil",result);
            startActivity(i);
    }

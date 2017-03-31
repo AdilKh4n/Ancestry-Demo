@@ -1,5 +1,6 @@
 package com.example.adilkhan.ancestry_demo;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,7 +22,6 @@ import java.util.ArrayList;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    ArrayList<String> ax;
     int count = 0;
     double lati = 0.0;
     double longx = 0.0;
@@ -61,7 +61,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         ArrayList<CemeteryDetails> details = new ArrayList<CemeteryDetails>();
         details = (ArrayList<CemeteryDetails>)getIntent().getSerializableExtra("adil");
 
-        Log.d("adil", String.valueOf(details));
         for (int i = 0; i < details.size(); i++)
         {
 
@@ -79,7 +78,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 mMap.addMarker(new MarkerOptions().
                         position(new LatLng(lati, longx)).
-                        title(details.get(i).getCemeteryName()).
+                        title(cemname).
                         snippet(cemcity +", "+cemcounty+", "+ cemstate +", "+ cemcountry ));
 
                count++;
@@ -123,9 +122,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if(count==0)
         {
             Toast.makeText(getApplicationContext(),"No cemeteries mapped",Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(MapsActivity.this, MainActivity.class);
+            startActivity(i);
         }
         else
-            Toast.makeText(getApplicationContext(),"Cemeteries found: "+count,Toast.LENGTH_SHORT).show();
+        {
+            Toast.makeText(getApplicationContext(), "Cemeteries found: " + count, Toast.LENGTH_SHORT).show();
+        }
 
 
     }
